@@ -1,0 +1,13 @@
+ {
+  "schemaVersion" :2 ,
+  "dockerfileLines" :[
+                        "FROM node:11.0.0-alpine",
+                        "RUN mkdir -p /usr/src/app",
+                        "WORKDIR /usr/src/app",
+                        "COPY ./package.json ./",
+                        "RUN npm install && npm cache clean --force",
+                        "COPY . .",
+                        "EXPOSE 3000",
+                        "CMD [ "npm", "start" ]"
+                    ]
+ }
