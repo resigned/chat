@@ -21,16 +21,19 @@ const io = require('socket.io')(http)
 
 io.on('connection', (socket) => {
   const name = chance.name()
-  socket.broadcast.emit('chat message', name + 'has joined the chat')
+  socket.broadcast.emit('chat message', { user: name, msg: `${name} has joined the chat` })
   socket.on('disconnect', () => {
-    socket.broadcast.emit('chat message', name + ' has left the chat')
+    let message = name + ' has left the chat'
+    socket.broadcast.emit('chat message', { user: name, msg: message })
   })
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', name + ' >> ' + msg)
+    io.emit('chat message', { user: name, msg: msg })
   })
 })
 
-http.listen(3000, () => {
-  console.log('now listening')
+const port = 3000
+
+http.listen(port, () => {
+  console.log(`Listening on port ${port}`)
 })
