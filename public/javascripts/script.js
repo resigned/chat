@@ -1,4 +1,4 @@
-var socket = io()
+var socket = io.connect('https://chat.jay.taxi', { secure: true })
 socket.on('chat message', function (data) {
   let messages = $('#messages')
 
