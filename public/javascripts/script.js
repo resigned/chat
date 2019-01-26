@@ -1,4 +1,4 @@
-var socket = io.connect('wss://chat.jay.taxi')
+var socket = io()
 socket.on('chat message', function (data) {
   let messages = $('#messages')
 
