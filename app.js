@@ -21,7 +21,7 @@ const io = require('socket.io')(http)
 
 io.on('connection', (socket) => {
   const name = chance.name()
-  socket.broadcast.emit('chat message', { user: name, msg: `>> joined the chat`, style: 'color: red;' })
+  socket.broadcast.emit('chat message', { user: name, msg: `>> joined the chat`, style: 'color: green;' })
   socket.on('disconnect', () => {
     socket.broadcast.emit('chat message', { user: name, msg: `>> left the chat`, style: 'color: red;' })
   })
