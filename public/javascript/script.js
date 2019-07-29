@@ -3,9 +3,9 @@ socket.on('chat message', function (data) {
   let messages = $('#messages')
 
   messages.append(`<li>
-  <div class="message" style="${data.style}">
+  <div class="message" ">
     <h1>${data.user}</h1> 
-    <p>${data.msg}</p>
+    <p style="${data.style}>${data.msg}</p>
   </div></li>`)
 
   if (messages.children().length > 50) {
