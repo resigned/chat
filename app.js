@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', { user: name, msg: msg, style: 'none' })
+    io.emit('chat message', { user: name, msg: msg, style: 'color: black;' })
   })
 })
 

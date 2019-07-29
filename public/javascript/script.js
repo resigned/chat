@@ -5,7 +5,7 @@ socket.on('chat message', function (data) {
   messages.append(`<li>
   <div class="message" ">
     <h1>${data.user}</h1> 
-    <p style="${data.style}>${data.msg}</p>
+    <p style="${data.style}">${data.msg}</p>
   </div></li>`)
 
   if (messages.children().length > 50) {
