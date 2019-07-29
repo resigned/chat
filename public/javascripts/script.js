@@ -3,7 +3,7 @@ socket.on('chat message', function (data) {
   let messages = $('#messages')
 
   messages.append(`<li>
-  <div class="message">
+  <div class="message" style="${data.style}">
     <h1>${data.user}</h1> 
     <p>${data.msg}</p>
   </div></li>`)

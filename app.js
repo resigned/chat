@@ -21,13 +21,13 @@ const io = require('socket.io')(http)
 
 io.on('connection', (socket) => {
   const name = chance.name()
-  socket.broadcast.emit('chat message', { user: name, msg: `I joined the chat` })
+  socket.broadcast.emit('chat message', { user: name, msg: `I joined the chat`, style: 'color: red;' })
   socket.on('disconnect', () => {
-    socket.broadcast.emit('chat message', { user: name, msg: `I left the chat` })
+    socket.broadcast.emit('chat message', { user: name, msg: `I left the chat`, style: 'color: red;' })
   })
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', { user: name, msg: msg })
+    io.emit('chat message', { user: name, msg: msg, style: 'none' })
   })
 })
 
