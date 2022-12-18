@@ -38,21 +38,20 @@
 
 </script>
 
-<div class="container">
-    <div bind:this={messagesDiv} class="messages-div overflow-y-scroll">
-      <ul id="messages">
-        {#each messages as message}
-        <li>
-            <div class="message">
-              <h1>{message.user}</h1> 
-              <p style="{message.style}">{message.msg}</p>
-            </div></li>
-        {/each}
-      </ul>
+<div class="md:container md:mx-auto min-w-full w-screen h-screen flex items-center justify-center">
+  <div class="flex flex-col w-5/6 h-5/6 gap-y-5">
+    <h1 class="text-center text-4xl">Chat</h1>
+    <div bind:this={messagesDiv} class="grow overflow-y-auto font-sans break-words">
+      {#each messages as message}
+        <div>
+          <h1 class="font-medium">{message.user}</h1> 
+          <p>{message.msg}</p>
+        </div>
+      {/each}
     </div>
-    <form class="form-div" action="#" on:submit|preventDefault={sendMessage}>
-      <input bind:value={textfield} spellcheck="true" class="border-solid border-2 border-indigo-600" />
+    <form class="h-12" action="#" on:submit|preventDefault={sendMessage}>
+      <input bind:value={textfield} spellcheck="true" class="border-solid border-2 w-full rounded-md" />
       <button class="invisible">Send</button>
     </form>
   </div>
-  <ul id="messages" class="list-group"></ul>
+</div>
